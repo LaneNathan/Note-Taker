@@ -10,7 +10,7 @@ router.get('/notes', (req, res)=>{
         .catch((error) => res.status(500).json(error));
 });
 
-router.post('/api/notes', (req, res)=>{
+router.post('/notes', (req, res)=>{
     storage
         .addNote(req.body)
         .then((note)=> res.json(note))
@@ -19,7 +19,7 @@ router.post('/api/notes', (req, res)=>{
 
 router.delete('/notes/:id', (req, res)=>{
     storage
-        .deleteNote(req.params.id)
+        .removeNote(req.params.id)
         .then(()=> res.json({ok: true}))
         .catch((error)=> res.status(500).json(error));
 });
