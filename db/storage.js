@@ -11,14 +11,14 @@ class Storage {
     }
 
     write(notes){
-        return writeFile('db/db.json', JSON.stringify(notes));
+        return writeFile('db/db.json', JSON.stringify(note));
     }
 
     getNotes(){
-        return this.read().then((notes2)=>{
+        return this.read().then((notes)=>{
             let parsingNotes;
             try{
-                parsingNotes = [].concat(JSON.parse(notes2));
+                parsingNotes = [].concat(JSON.parse(notes));
             }catch(error){
                 parsingNotes = [];
             }
@@ -28,7 +28,7 @@ class Storage {
     }
 
     addNote(notes){
-        const {title, text} = notes;
+        const {title, text} = note;
 
         if(!title || !text){
             throw new Error("Notes cannot be blank");
@@ -38,14 +38,14 @@ class Storage {
 
 
         return this.getNotes()
-        .then((notes2)=> [...notes2, newNote])
+        .then((notes)=> [...notes, newNote])
         .then((updatedNotes)=> this.write(updatedNotes))
         .then(()=> newNote);
     }
 
     removeNote(id){
         return this.getNotes()
-            .then((notes2)=> notes2.filter((notes)=> notes.id !== id))
+            .then((notes)=> notes.filter((notes)=> notes.id !== id))
             .then((filteredNotes)=> this.write(filteredNotes));
     }
 }
