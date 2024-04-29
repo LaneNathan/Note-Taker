@@ -11,7 +11,7 @@ This Note Taker is an application that can be used to write and save notes. The 
 - [Contact](#contact)
 - [Contributing](#contributing)
 - [License](#license)
-- [Example video](#example-video)
+- [Live Site](#live-site)
 
 
 ## Usage
